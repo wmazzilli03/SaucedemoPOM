@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '2.11.2'
+}
+
+group = 'co.com.saucedemo'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    // Selenium   https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+    implementation 'org.seleniumhq.selenium:selenium-java:4.15.0'
+
+    // Cucumber
+    testImplementation 'io.cucumber:cucumber-java:7.14.1'
+    testImplementation 'io.cucumber:cucumber-junit:7.14.1'
+
+    // WebDriverManager
+    implementation 'io.github.bonigarcia:webdrivermanager:6.1.0'
+
+    // Allure
+    testImplementation 'io.qameta.allure:allure-cucumber7-jvm:2.24.0'
+    testImplementation 'io.qameta.allure:allure-java-commons:2.24.0'
+
+    //Faker
+    implementation 'com.github.javafaker:javafaker:1.0.2'
+
+}
+
+test {
+   // useJUnitPlatform()
+    systemProperty "cucumber.options", System.getProperty("cucumber.options")
+}
+
+allure {
+    version = '2.24.0'
+}
